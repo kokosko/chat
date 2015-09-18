@@ -1,6 +1,11 @@
 h1 Chat
 
-.users
-
-.messages
-
+.chat
+  .users
+  #messages
+    .new_message
+      = form_for :chat, url: chat_index_path, remote: true do |f|
+        = f.label 'Input message: '
+        = f.text_field :text
+        = f.submit 'Send'
+        end
