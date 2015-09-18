@@ -10,6 +10,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'slim-rails'
+gem 'omniauth-google-oauth2'
+gem 'actioncable', github: 'rails/actioncable'
+gem 'puma'
 
 group :development, :test do
   gem 'pry'
