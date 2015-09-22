@@ -1,23 +1,48 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 /*
  *= require_tree .
  *= require_self
- */
+*/
+
+body {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 50px;
+  height: 100%;
+}
+
+.right {
+  float: right;
+}
+
+.users, .messages {
+  padding: 0px;
+  margin: 0 5px;
+  height: 100%;
+}
+
+.showmore {
+  text-align: center;
+}
 
 .chat {
-  position: relative;
-  height: 100%;
+  height: 600px;
 }
 
-.users {
-  width: 50px;
-  height: 100%;
+.border {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #BCE8F1;
 }
 
-.messages {
-  width: 400px;
-  height: 100%;
+.new_message {
+  margin-top: 5px;
 }
 
-div {
-  border: 1px black;
+.text {
+  height: 554px;
+  overflow-y: auto;
 }

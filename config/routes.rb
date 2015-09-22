@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   match '/auth/google_oauth2/callback', to: 'sessions#create', via: [:all]
 
-  resources :chat, only: [:index, :create]
+  resources :chat, only: [:index, :create, :show]
   resources :sessions, only: [:create, :destroy]
 end

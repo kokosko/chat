@@ -1,3 +1,4 @@
 class Message < ActiveRecord::Base
-  belongs_to :user_id
+  validates :text, :user_id, presence: true
+  belongs_to :user
 end
