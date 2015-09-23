@@ -14,7 +14,7 @@ test:
   <<: *default
   database: chat_test
 
-development:
+production:
   <<: *default
   username: <%= ENV['ACTIVECHAT_DATABASE_USERNAME'] %>
   password: <%= ENV['ACTIVECHAT_DATABASE_PASSWORD'] %>
