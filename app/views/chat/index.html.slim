@@ -1,0 +1,28 @@
+.row
+  .left.col-sm-8
+    h1 Chat
+  .right.col-sm-4
+    => current_user.name
+    => link_to 'Log out', session_path(current_user.id), method: :delete, class: 'btn btn-warning btn-sm'
+
+.chat.row
+  .users.col-sm-3.panel.panel-info
+    .panel-heading
+      span Online
+    .panel-body#users
+      - unless @users.empty?
+        = render partial: 'chat/user', collection: @users
+  .messages.col-sm-8
+    .text.border
+      .showmore
+        = render partial: 'chat/show_more', locals: { page: 2 } unless @messages.last_page?
+      #messages
+        - unless @messages.blank?
+          = render partial: 'chat/message', collection: @messages.sort_by(&:id)
+    .new_message.border
+      = form_for :message, url: chat_index_path, remote: true do |f|
+        => f.label 'Your message: '
+        = f.hidden_field :user_id, value: current_user.id
+        => f.text_field :text
+        => f.submit 'Send', class: 'btn btn-success btn-sm'
+        end
