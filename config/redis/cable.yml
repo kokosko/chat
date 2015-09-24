@@ -9,10 +9,10 @@ development: *local
 
 test: *local
 
-production:
-  url: <%= ENV["REDISTOGO_URL"] %>
-  host: soapfish.redistogo.com
-  port: 10110
-  password: 70e4acd671ae805b91c8ff361cc9225a
-  timeout: 1
-  inline: true
+# production:
+#   url: <%= ENV["REDISTOGO_URL"] %>
+#   host: soapfish.redistogo.com
+#   port: 10110
+#   password: 70e4acd671ae805b91c8ff361cc9225a
+#   timeout: 1
+#   inline: true
