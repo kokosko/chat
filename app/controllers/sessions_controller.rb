@@ -1,17 +1,22 @@
 class SessionsController < ApplicationController
   def create
-    auth = request.env['omniauth.auth']
-    user = User.find_by_provider_and_uid(auth['provider'], auth['uid']) ||
-           User.create_with_omniauth(auth)
-    user.online!
-    ActionCable.server.broadcast 'chat', user: user
-    session[:user_id] = user.id
+    authenticate(request.env['omniauth.auth'])
     redirect_to chat_index_path, notice: 'Signed in!'
   end
 
   def destroy
     current_user.offline!
+    ActionCable.server.broadcast 'chat', user: current_user
     session[:user_id] = nil
-    redirect_to root_url, notice: 'Signed out!'
+  end
+
+  private
+
+  def authenticate(auth)
+    user = User.find_by_provider_and_uid(auth['provider'], auth['uid']) ||
+           User.create_with_omniauth(auth)
+    user.online!
+    session[:user_id] = user.id
+    ActionCable.server.broadcast 'chat', user: user
   end
 end

@@ -1,5 +1,5 @@
 class ChatActionCable
-  def initialize(app, options={})
+  def initialize(app, _options = {})
     @app = app
   end
 

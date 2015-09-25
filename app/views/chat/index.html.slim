@@ -3,17 +3,17 @@
     h1 Chat
   .right.col-sm-4
     => current_user.name
-    => link_to 'Log out', session_path(current_user.id), method: :delete, class: 'btn btn-warning btn-sm'
+    => link_to 'Log out', session_path(current_user.id), method: :delete, remote: true, class: 'btn btn-warning btn-sm'
 
-.chat.row
+.field.row
   .users.col-sm-3.panel.panel-info
     .panel-heading
       span Online
     .panel-body#users
       - unless @users.empty?
         = render partial: 'chat/user', collection: @users
-  .messages.col-sm-8
-    .text.border
+  .chat.col-sm-8
+    .messages.border
       .showmore
         = render partial: 'chat/show_more', locals: { page: 2 } unless @messages.last_page?
       #messages
