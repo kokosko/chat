@@ -1,5 +1,6 @@
-p
-  span.username
-    = "#{message.user.name}: "
-  span.text
-    = message.text
+= cache message.id
+  p
+    span.username
+      = "#{message.user.name}: "
+    span.text
+      = message.text

@@ -1,3 +1,4 @@
-.user id="user_#{user.id}"
-  = image_tag(user.image)
-  p= user.name
+= cache user.id
+  .user id="user_#{user.id}"
+    = image_tag(user.image)
+    p= user.name

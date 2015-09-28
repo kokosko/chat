@@ -2,7 +2,7 @@ class ChatController < ApplicationController
   def index
     redirect_to(root_path) unless current_user
     @users = User.online
-    @messages = Message.all.page(params[:page]).per(10).order(created_at: :desc)
+    @messages = Message.all.includes(:user).page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def create
