@@ -17,11 +17,9 @@
 
 $(document).idle({
   onIdle: function() {
-    console.log('Since you waited so long, the answer to the Ultimate Question of Life, the Universe, and Everything is 42');
     userStatus('away')
   },
   onActive: function() {
-    console.log('Welcome back')
     userStatus('online')
   },
   idle: 5000
