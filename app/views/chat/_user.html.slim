@@ -1,4 +1,5 @@
-= cache user.id
-  .user id="user_#{user.id}"
+.user id="user_#{user.id}"
+  .image
     = image_tag(user.image)
-    p= user.name
+    .status class="#{user.status}"
+  span= user.name

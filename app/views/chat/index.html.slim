@@ -6,11 +6,11 @@
     => link_to 'Log out', session_path(current_user.id), method: :delete, remote: true, class: 'btn btn-warning btn-sm'
 
 .field.row
-  .users.col-sm-3.panel.panel-info
-    .panel-heading
-      span Online
-    .panel-body#users
-      - unless @users.empty?
+  .users.col-sm-3
+    .panel.panel-info
+      .panel-heading
+        span Users
+      .panel-body#users
         = render partial: 'chat/user', collection: @users
   .chat.col-sm-8
     .messages.border

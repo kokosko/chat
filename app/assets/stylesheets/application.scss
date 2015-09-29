@@ -1,5 +1,6 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'material';
 
 /*
  *= require_tree .
@@ -26,6 +27,32 @@ body {
 
 .users {
   overflow-y: auto;
+}
+
+.user {
+  height: 50px;
+  margin-bottom: 5px;
+  position: relative;
+
+  img { border-radius: 25px; }
+  .image {
+    float: left;
+    margin-right: 5px;
+  }
+}
+
+
+
+.status {
+  position: absolute;
+  top: 35px;
+  left: 35px;
+  height: 15px;
+  width: 15px;
+  border-radius: 10px;
+  &.online { background-color: #00FF00; }
+  &.away { background-color: #FFFF00; }
+  &.offline { background-color: #FF0000; }
 }
 
 .showmore {

@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :messages, dependent: :destroy
 
-  enum status: [:online, :offline]
+  enum status: [:online, :offline, :away]
 
   def self.create_with_omniauth(auth)
     create! do  |user|
