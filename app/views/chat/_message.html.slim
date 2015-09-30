@@ -1,5 +1,5 @@
-p
-  span.username
-    = "#{message.user.name}: "
-  span.text
+.message
+  .avatar
+    = image_tag message.user.image
+  .text
     = message.text

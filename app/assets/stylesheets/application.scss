@@ -1,46 +1,47 @@
-@import 'bootstrap-sprockets';
-@import 'bootstrap';
+@import 'material';
 
 /*
  *= require_tree .
  *= require_self
 */
 
-body {
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 50px;
-  height: 100%;
+.container {
+  width: 350px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.right {
-  float: right;
+.current_user {
+  margin: 0 10px;
 }
 
-.users, .chat {
-  padding: 0px;
-  margin: 0 5px;
-  height: 100%;
+.chat {
+  height: auto;
 }
 
-.users {
+.vscrol {
   overflow-y: auto;
 }
 
+.avatar {
+  float: left;
+  margin: 0 5px;
+  img { border-radius: 25px; }
+}
+
+.showmore {
+  text-align: center;
+}
+
 .user {
+  float: left;
   height: 50px;
   margin-bottom: 5px;
   position: relative;
+  float: left;
+  width: 100%;
 
-  img { border-radius: 25px; }
-  .image {
-    float: left;
-    margin-right: 5px;
-  }
 }
-
-
 
 .status {
   position: absolute;
@@ -49,30 +50,32 @@ body {
   height: 15px;
   width: 15px;
   border-radius: 10px;
-  &.online { background-color: #00FF00; }
+  &.online { background-color: #05E800; }
   &.away { background-color: #FFFF00; }
-  &.offline { background-color: #FF0000; }
+  &.offline { background-color: #FF1818; }
 }
 
-.showmore {
-  text-align: center;
+#messages p {
+  margin: 0;
 }
 
-.field {
-  height: 600px;
+.message {
+  padding: 3px 0 3px;
+  .avatar {
+    width: 20px;
+    height: 20px;
+    img {
+      width: 18px;
+    }
+  }
+  .text {
+    background-color: #F8F8FC;
+  }
 }
 
-.border {
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #BCE8F1;
-}
-
-.new_message {
-  margin-top: 5px;
-}
-
-.messages {
-  height: 554px;
-  overflow-y: auto;
+.input {
+  height: 30px;
+  width: 85%;
+  border: none;
+  border-bottom: 2px solid #8A8A8A;
 }

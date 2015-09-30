@@ -1,28 +1,28 @@
-.row
-  .left.col-sm-8
-    h1 Chat
-  .right.col-sm-4
-    => current_user.name
-    => link_to 'Log out', session_path(current_user.id), method: :delete, remote: true, class: 'btn btn-warning btn-sm'
-
-.field.row
-  .users.col-sm-3
-    .panel.panel-info
-      .panel-heading
-        span Users
-      .panel-body#users
-        = render partial: 'chat/user', collection: @users
-  .chat.col-sm-8
-    .messages.border
-      .showmore
-        = render partial: 'chat/show_more', locals: { page: 2 } unless @messages.last_page?
-      #messages
-        - unless @messages.blank?
-          = render partial: 'chat/message', collection: @messages.sort_by(&:id)
-    .new_message.border
-      = form_for :message, url: chat_index_path, remote: true do |f|
-        => f.label 'Your message: '
-        = f.hidden_field :user_id, value: current_user.id
-        => f.text_field :text
-        => f.submit 'Send', class: 'btn btn-success btn-sm'
-        end
+.mdl-layoutmdl-js-layout.mdl-layout--fixed-header
+  header.mdl-layout__header
+    .mdl-layout__header-row
+      span.mdl-layout-title Chat
+      .mdl-layout-spacer
+      nav.mdl-navigation.mdl-layout--large-screen-only
+        .avatar => image_tag current_user.image
+        .current_user
+          span= current_user.name
+        => link_to 'Log out', session_path(current_user.id), method: :delete, remote: true, class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'
+  .mdl-grid.chat
+    .mdl-cell.mdl-cell--2-col
+    .mdl-cell.mdl-cell--2-col#users class='vscroll'
+      = render partial: 'chat/user', collection: @users
+    .chat.mdl-cell.mdl-cell--6-col
+      .messages
+        .showmore
+          = render partial: 'chat/show_more', locals: { page: 2 } unless @messages.last_page?
+        #messages
+          - unless @messages.blank?
+            = render partial: 'chat/message', collection: @messages.sort_by(&:id)
+      .new_message
+        = form_for :message, url: chat_index_path, remote: true do |f|
+          => f.hidden_field :user_id, value: current_user.id
+          => f.text_field :text, placeholder: 'Your message', class: 'input'
+          => f.submit 'Send', class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'
+          end
+    .mdl-cell.mdl-cell--2-col

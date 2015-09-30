@@ -1,6 +1,6 @@
 class ChatController < ApplicationController
   def index
-    redirect_to(root_path) unless current_user
+    redirect_to(root_path) && return unless current_user
     current_user.online!
     @users = User.order(:status)
     @messages = Message.all.includes(:user).page(params[:page])
