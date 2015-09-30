@@ -15,6 +15,10 @@
 //= require turbolinks
 //= require_tree .
 
+window.onbeforeunload = function() {
+  userStatus('offline')
+}
+
 $(document).idle({
   onIdle: function() {
     userStatus('away')
@@ -22,7 +26,7 @@ $(document).idle({
   onActive: function() {
     userStatus('online')
   },
-  idle: 5000
+  idle: 60000
 });
 
 function userStatus(status) {
