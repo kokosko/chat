@@ -16,13 +16,16 @@
       .messages
         .showmore
           = render partial: 'chat/show_more', locals: { page: 2 } unless @messages.last_page?
-        #messages
+        #messages.vscrol
           - unless @messages.blank?
             = render partial: 'chat/message', collection: @messages.sort_by(&:id)
-      .new_message
-        = form_for :message, url: chat_index_path, remote: true do |f|
-          => f.hidden_field :user_id, value: current_user.id
-          => f.text_field :text, placeholder: 'Your message', class: 'input'
-          => f.submit 'Send', class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'
-          end
+      #new_message
+        .avatar
+          => image_tag current_user.image
+        .new_message
+          = form_for :message, url: chat_index_path, remote: true, html: { id: 'message_form' } do |f|
+            => f.hidden_field :user_id, value: current_user.id
+            => f.text_field :text, placeholder: 'Your message', class: 'input'
+            => f.submit 'Send', id: 'submit', class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'
+            end
     .mdl-cell.mdl-cell--2-col
