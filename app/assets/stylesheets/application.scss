@@ -17,6 +17,7 @@
 
 .chat {
   height: auto;
+  margin: 0 auto;
 }
 
 .vscrol {
@@ -66,12 +67,18 @@
 .message {
   padding: 3px 0 3px;
   .avatar {
-    float: left;
+    margin-right: 0;
     width: 20px;
-    height: 20px;
+    min-height: 20px;
+    height: 100%;
     img {
       width: 18px;
     }
+  }
+  .text {
+    margin-top: 0;
+    margin-bottom: 0;
+    display: flex;
   }
 }
 
@@ -80,15 +87,22 @@
   .avatar img {
     width: 30px;
   }
+  .text {
+    width: 70%;
+  }
+  .submit {
+    width: 20%;
+    text-align: right;
+  }
 }
 
 .input {
   height: 30px;
-  width: 70%;
+  width: 100%;
   border: none;
   border-bottom: 2px solid #8A8A8A;
 }
 
 input:focus {
-  border: none;
+  outline: none;
 }

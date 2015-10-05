@@ -1,4 +1,4 @@
-.mdl-layoutmdl-js-layout.mdl-layout--fixed-header
+.mdl-js-layout.mdl-layout--fixed-header
   header.mdl-layout__header
     .mdl-layout__header-row
       span.mdl-layout-title Chat
@@ -12,20 +12,18 @@
     .mdl-cell.mdl-cell--2-col
     .mdl-cell.mdl-cell--2-col#users class='vscroll'
       = render partial: 'chat/user', collection: @users
-    .chat.mdl-cell.mdl-cell--6-col
+    .mdl-cell.mdl-cell--6-col
       .messages
         .showmore
           = render partial: 'chat/show_more', locals: { page: 2 } unless @messages.last_page?
         #messages.vscrol
-          - unless @messages.blank?
-            = render partial: 'chat/message', collection: @messages.sort_by(&:id)
+          = render partial: 'chat/messages_group', locals: { messages: @messages.sort_by(&:id) }
       #new_message
-        .avatar
-          => image_tag current_user.image
-        .new_message
-          = form_for :message, url: chat_index_path, remote: true, html: { id: 'message_form' } do |f|
+        = form_for :message, url: chat_index_path, remote: true, html: { id: 'message_form' } do |f|
+          .mdl-grid
             => f.hidden_field :user_id, value: current_user.id
-            => f.text_field :text, placeholder: 'Your message', class: 'input'
-            => f.submit 'Send', id: 'submit', class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'
-            end
+            .avatar=> image_tag current_user.image
+            .text=> f.text_field :text, placeholder: 'Your message', html: { autocomplete: 'off' }, class: 'input'
+            .submit=> f.submit 'Send', id: 'submit', class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'
+          end
     .mdl-cell.mdl-cell--2-col

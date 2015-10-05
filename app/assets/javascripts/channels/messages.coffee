@@ -8,3 +8,8 @@ App.messages = App.cable.subscriptions.create 'ChatChannel',
         $("#user_#{data.user.id} .status").removeClass('online away offline').addClass(data.user.status)
       else
         $('#users').append($('<div />').attr({ 'class': 'user', 'id': "user_#{data.user.id}"}).append($('<div />').attr({'class': 'avatar'}).append($('<img />').attr({ 'src': "#{data.user.image}" })).append($('<div />').attr({ 'class': "status #{data.user.status}"}))).append($('<span />').text(data.user.name)))
+
+$(document).ready ->
+  setTimeout ( ->
+    $('#messages').scrollTop $('#messages')[0].scrollHeight
+  ), 500

@@ -1,5 +1,5 @@
-.message.mdl-grid
-  .avatar.md-cell.md-cell--3-col
-    = image_tag message.user.image
-  .text.md-cell.md-cell--9-col
+.message
+  .avatar
+    = image_tag message.user.image if avatar
+  .text
     = message.text

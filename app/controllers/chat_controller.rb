@@ -10,7 +10,10 @@ class ChatController < ApplicationController
   def create
     @message = Message.new(message_params)
     return unless @message.save
-    message = render partial: 'chat/message', locals: { message: @message }
+    @prev = Message.find(@message.id - 1).user_id
+    message = render partial: 'chat/message',
+                     locals: { message: @message,
+                               avatar: (@prev != @message.user_id) }
     ActionCable.server.broadcast 'chat', message: message
   end
 
