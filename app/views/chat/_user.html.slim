@@ -2,4 +2,5 @@
   .avatar
     = image_tag(user.image)
     .status class="#{user.status}"
-  span= user.name
+  .username
+    = user.name
