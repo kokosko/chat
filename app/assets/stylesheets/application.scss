@@ -5,12 +5,57 @@
  *= require_self
 */
 
-.current_user * {
+body {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif !important;
+  padding-bottom: 100px;
+  overflow-y: hidden;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.inline {
   display: inline-block;
 }
 
-.current_user {
-  text-align: right;
+.top {
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  background-color: #3F51B5;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+  color: #FFF;
+  .current_user * {
+    display: inline-block;
+  }
+  .current_user {
+    float: right;
+    padding-right: 20px;
+  }
+  .title { padding-top: 10; }
+}
+
+.users {
+  background-color: #FAFAFA;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+  width: 250px;
+  top: 75px;
+  height: 100%;
+  overflow-y: auto;
+  .title {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+
+.chat {
+  padding: 75px 0 0 250px;
+}
+
+.showmore {
+  right: 10px;
 }
 
 .avatar {
@@ -55,7 +100,6 @@
 }
 
 #messages {
-  height: 450px;
   p {
     margin: 0;
   }
@@ -76,18 +120,28 @@
 }
 
 #new_message {
+  bottom: 0;
+  top: auto;
+  width: 100%;
+  background-color: #FFF;
   .avatar {
     padding-top: 15px;
     img {
       width: 30px;
     }
   }
-  .text {
-   width: 85%;
-  }
+  .text { width: 60%; }
   .submit {
-    padding-top: 10px;
-    width: 10%;
+    padding: 10px 0 0 10px;
     text-align: right;
   }
+  .avatar, .text, .submit {
+    display: inline-block;
+  }
+}
+
+.title {
+  align-items: center;
+  font-weight: bold;
+  font-size: 20pt;
 }

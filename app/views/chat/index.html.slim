@@ -1,34 +1,29 @@
-.mdl-layout.mdl-js-layout.mdl-layout--fixed-drawer.mdl-layout--fixed-header
-  .mdl-layout__header.mdl-grid
-    .mdl-cell.mdl-cell--1-col
-    .mdl-cell.mdl-cell--4-col
-      span.mdl-layout-title
-        h3 Chat
-    .mdl-cell.mdl-cell--3-col
-    .mdl-cell.mdl-cell--4-col.current_user
-      .username => current_user.name
-      .avatar => image_tag current_user.image
-      .log_out
-        => link_to 'Log out', session_path(current_user.id), method: :delete, remote: true, class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'
-  .mdl-layout__drawer
-    .mdl-cell.mdl-cell--12-col
-      span.mdl-layout-title
-        h3 Users
-    #users
-      = render partial: 'chat/user', collection: @users
-  .mdl-layout__content
-    .page-content
-      .showmore
-        = render partial: 'chat/show_more', locals: { page: 2 } unless @messages.last_page?
-      #messages.vscrol
-        = render partial: 'chat/messages_group', locals: { messages: @messages.sort_by(&:id) }
-      #new_message
-        = form_for :message, url: chat_index_path, remote: true, html: { id: 'message_form' } do |f|
-          .mdl-grid
-            => f.hidden_field :user_id, value: current_user.id
-            .avatar=> image_tag current_user.image
-            .text.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
-              => f.text_field :text, input_html: { autocomplete: 'off' }, class: 'mdl-textfield__input'
-              => f.label 'Your message', class: 'mdl-textfield__label'
-            .submit=> f.submit 'Send', id: 'submit', class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'
-          end
+nav.top.fixed
+  .title.inline
+    span Chat
+  .current_user.inline
+    .username => current_user.name
+    .avatar => image_tag current_user.image
+    .log_out
+      => link_to 'Log out', session_path(current_user.id), method: :delete, remote: true, class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'
+
+.users.fixed
+  .title
+    span Users
+  #users
+    = render partial: 'chat/user', collection: @users
+
+.chat
+  .showmore.fixed
+    = render partial: 'chat/show_more', locals: { page: 2 } unless @messages.last_page?
+  #messages
+    = render partial: 'chat/messages_group', locals: { messages: @messages.sort_by(&:id) }
+  #new_message.fixed
+    = form_for :message, url: chat_index_path, remote: true, html: { id: 'message_form' } do |f|
+      => f.hidden_field :user_id, value: current_user.id
+      .mdl-grid
+        .avatar => image_tag current_user.image
+        .text.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+          => f.text_field :text, input_html: { autocomplete: 'off' }, class: 'mdl-textfield__input'
+          => f.label 'Your message', class: 'mdl-textfield__label'
+        .submit => f.button 'Send', type:'submit', id: 'submit', class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'
