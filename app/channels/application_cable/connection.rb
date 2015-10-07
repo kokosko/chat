@@ -9,11 +9,9 @@ module ApplicationCable
     protected
 
     def find_verified_user
-      if current_user = User.find(cookies[:user_id])
-        current_user
-      else
-        redirect_to root_path
-      end
+      redirect_to '/' && return unless cookies[:user_id]
+      current_user = User.find(cookies[:user_id])
+      current_user
     end
   end
 end

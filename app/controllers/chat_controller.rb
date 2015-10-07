@@ -10,7 +10,6 @@ class ChatController < ApplicationController
   def create
     @message = Message.new(message_params)
     return unless @message.save
-    @prev = Message.find(@message.id - 1).user_id
     ActionCable.server.broadcast @message.user.corp, message: @message,
                                                      image: @message.user.image
   end

@@ -16,7 +16,7 @@ nav.top.fixed
   .showmore.fixed
     = render partial: 'chat/show_more', locals: { page: 2 } unless @messages.last_page?
   #messages
-    = render partial: 'chat/messages_group', locals: { messages: @messages.sort_by(&:id) } if @messages
+    = render partial: 'chat/messages_group', locals: { messages: @messages.sort_by(&:id) } unless @messages.empty?
   #new_message.fixed
     = form_for :message, url: chat_index_path, remote: true, html: { id: 'message_form' } do |f|
       => f.hidden_field :user_id, value: current_user.id
