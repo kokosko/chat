@@ -1,5 +1,3 @@
 = render partial: 'chat/message', locals: { message: messages.first, avatar: true }
 - messages.drop(1).each_with_index do |m, i|
   = render partial: 'chat/message', locals: { message: m, avatar: ( m.user_id != messages[i].user_id ) }
-
-

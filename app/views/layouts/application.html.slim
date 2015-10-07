@@ -8,4 +8,6 @@ html
     = stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons"
 
   body
+    p#notice = flash[:notice]
+    p#error = flash[:error]
     = yield

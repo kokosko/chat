@@ -11,6 +11,27 @@ body {
   overflow-y: hidden;
 }
 
+#error, #notice {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-align: center;
+}
+
+#error {
+  background-color: #FF5151;
+  color: #FFF;
+}
+
+#notice {
+  background-color: #92FFB8;
+  color: #000;
+}
+
+.container {
+  text-align: center;
+}
+
 .fixed {
   position: fixed;
 }
@@ -130,7 +151,7 @@ body {
       width: 30px;
     }
   }
-  .text { width: 60%; }
+  .text { width: 300px; }
   .submit {
     padding: 10px 0 0 10px;
     text-align: right;

@@ -2,14 +2,13 @@ nav.top.fixed
   .title.inline
     span Chat
   .current_user.inline
-    .username => current_user.name
+    .username
+      => current_user.email
     .avatar => image_tag current_user.image
     .log_out
       => link_to 'Log out', session_path(current_user.id), method: :delete, remote: true, class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent'
 
 .users.fixed
-  .title
-    span Users
   #users
     = render partial: 'chat/user', collection: @users
 
@@ -17,7 +16,7 @@ nav.top.fixed
   .showmore.fixed
     = render partial: 'chat/show_more', locals: { page: 2 } unless @messages.last_page?
   #messages
-    = render partial: 'chat/messages_group', locals: { messages: @messages.sort_by(&:id) }
+    = render partial: 'chat/messages_group', locals: { messages: @messages.sort_by(&:id) } if @messages
   #new_message.fixed
     = form_for :message, url: chat_index_path, remote: true, html: { id: 'message_form' } do |f|
       => f.hidden_field :user_id, value: current_user.id
