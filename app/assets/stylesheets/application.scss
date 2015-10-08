@@ -7,8 +7,7 @@
 
 body {
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif !important;
-  padding-bottom: 100px;
-  overflow-y: hidden;
+  overflow-y: auto;
 }
 
 #error, #notice {
@@ -60,19 +59,16 @@ body {
 .users {
   background-color: #FAFAFA;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
-  width: 250px;
+  width: 200px;
   top: 75px;
   height: 100%;
   overflow-y: auto;
-  .title {
-    width: 100%;
-    text-align: center;
-    margin-top: 10px;
-  }
 }
 
 .chat {
-  padding: 75px 0 0 250px;
+  padding: 75px 0 100px 200px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .showmore {
@@ -121,9 +117,7 @@ body {
 }
 
 #messages {
-  p {
-    margin: 0;
-  }
+  p { margin: 0; }
 }
 
 .message {
@@ -144,6 +138,7 @@ body {
   bottom: 0;
   top: auto;
   width: 100%;
+  height: 75px;
   background-color: #FFF;
   .avatar {
     padding-top: 15px;
