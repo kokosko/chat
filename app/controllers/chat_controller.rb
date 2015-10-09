@@ -3,7 +3,7 @@ class ChatController < ApplicationController
     redirect_to(root_path) && return unless current_user
     current_user.online!
     @users = User.corp(current_user.corp)
-    @messages = Message.joins(:user).where('corp = ?', current_user.corp)
+    @messages = Message.joins(:user).for_corp(current_user.corp)
                 .page(params[:page]).order(created_at: :desc)
   end
 
@@ -11,7 +11,7 @@ class ChatController < ApplicationController
     @message = Message.new(message_params)
     return unless @message.save
     ActionCable.server.broadcast @message.user.corp, message: @message,
-                                                     image: @message.user.image
+                                                     user: @message.user
   end
 
   def message_params

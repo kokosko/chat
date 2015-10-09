@@ -11,8 +11,8 @@ notify = ->
 notification = undefined
 permission =  true if Notification.permission == 'granted'
 
-show_notification = (message, avatar) ->
-  notification = new Notification(message.user_id, { body: message.text, icon: avatar})
+show_notification = (message, user) ->
+  notification = new Notification(user.name, { body: message.text, icon: user.image})
   notification.onshow = ->
     setTimeout (->
       notification.close()
@@ -27,8 +27,8 @@ subscribe_to_channel = ->
   App.messages = App.cable.subscriptions.create 'ChatChannel',
     received: (data) ->
       if data.message
-        show_notification(data.message, data.image) if permission && document.hidden
-        add_message(data.message, data.image)
+        show_notification(data.message, data.user) if permission && document.hidden
+        add_message(data.message, data.user.image)
         $('body').scrollTop $('body')[0].scrollHeight
       else
         if $("#user_#{data.user.id}").length > 0

@@ -3,4 +3,6 @@ class Message < ActiveRecord::Base
   belongs_to :user
 
   paginates_per 20
+
+  scope :for_corp, -> (corp) { where('corp = ?', corp) }
 end

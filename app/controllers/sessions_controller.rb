@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
       redirect_to chat_index_path
     else
       redirect_to root_path,
-                  flash: { error: 'Log necessary with corporate account!' }
+                  flash: { error: 'You need Log In with corporate account!' }
     end
   end
 
