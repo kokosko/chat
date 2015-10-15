@@ -4,6 +4,11 @@ $(document).ready ->
     mark_last_avatar()
     notify()
 
+$(document).ready ->
+  setTimeout ( ->
+    $('#messages').scrollTop $('#messages')[0].scrollHeight
+  ), 500
+
 notify = ->
   if Notification.permission == 'default'
     Notification.requestPermission()
@@ -47,7 +52,3 @@ add_message = (message, image) ->
   else
     $('#messages').append($('<div />').attr({ 'class': 'message'}).append($('<div />').attr({ 'class': 'avatar'})).append($('<div />').attr({ 'class': 'text'}).text(message.text)))
 
-$(document).ready ->
-  setTimeout ( ->
-    $('#messages').scrollTop $('#messages')[0].scrollHeight
-  ), 500

@@ -13,7 +13,13 @@ ready = function() {
   $("#message_form").bind("ajax:complete", function() {
     $('#message_text').val('');
   })
-};
+  $('.show_users').on('click', function() {
+    $('.users').toggleClass('hide')
+  });
+  $('#user-menu').on('click', function() {
+    $('.user_menu').toggle();
+  });
+}
 
 $(document).ready(ready);
 $(document).on('page:load', ready);

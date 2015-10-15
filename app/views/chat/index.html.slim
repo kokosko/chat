@@ -1,17 +1,18 @@
 nav.top.fixed
-  .title.inline
-    span Chat
-    p ##{ current_user.corp}
-  .current_user.inline
+  .show_users
+    => button_tag class: 'btn'
+      i.material-icons people
+  .title
+    span.channel =" ##{ current_user.corp }"
+  .current_user
     .username
       => current_user.email
     .avatar => image_tag current_user.image
     .log_out
-      => button_to session_path(current_user.id), method: :delete, remote: true, class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent' do
-        => 'Log out'
-        i.material-icons exit_to_app
+      => button_to session_path(current_user.id), method: :delete, remote: true, class: 'btn' do
+        i.material-icons power_settings_new
 
-.users.fixed
+.users.fixed.hide
   #users
     = render partial: 'chat/user', collection: @users
 
@@ -29,6 +30,9 @@ nav.top.fixed
           => f.text_field :text, autocomplete: 'off', class: 'mdl-textfield__input'
           => f.label 'Your message', class: 'mdl-textfield__label'
       .submit
-        => f.button type:'submit', id: 'submit', class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent' do
+        => f.button type: 'submit', id: 'submit', class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent' do
           => 'Send'
+          i.material-icons send
+      .submit-small
+        => f.button type: 'submit', id: 'submit', class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent' do
           i.material-icons send

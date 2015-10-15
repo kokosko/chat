@@ -14,3 +14,5 @@ module Chat
     }
   end
 end
+
+Rails.application.secrets.each { |key, value| ENV[key.to_s.upcase] = value }
