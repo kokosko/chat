@@ -1,9 +1,9 @@
 tr.message id=message.id
   td.status
     - if message.approved.blank? 
-      = 'Новое'
+      = 'Заблокировано'
     - else
-      = message.approved ? 'Одобрено' : 'Заблокировано'
+      = 'Одобрено'
   td.username
     = "" + message.username + " (" + message.city + ")"
   td.text

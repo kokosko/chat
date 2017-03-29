@@ -6,11 +6,11 @@ class ChatController < ApplicationController
   end
 
   def show
-    @message.update_attribute(:approved,true)
+    @message.update_attribute(:approved, true)
   end
 
   def update
-    @message.update_attribute(:approved,false)
+    @message.update_attribute(:approved, false)
   end
 
   def create
