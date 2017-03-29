@@ -1,10 +1,14 @@
-- if message 
-  .message
-    .username
-      = "" + message.username + " (" + message.city + ")"
-    .text
-      = message.text
-    .buttons
-      => link_to 'Одобрить', chat_path(message), remote: true, :method => :put
-      => link_to 'Заблокировать', chat_path(message), remote: true, :method => :delete
-
+tr.message id=message.id
+  td.status
+    - if message.approved.blank? 
+      = 'Новое'
+    - else
+      = message.approved ? 'Одобрено' : 'Заблокировано'
+  td.username
+    = "" + message.username + " (" + message.city + ")"
+  td.text
+    = message.text
+  td
+    => link_to 'Одобрить', chat_path(message), remote: true
+    => link_to 'Заблокировать', chat_path(message), remote: true, :method => :put
+    => link_to 'Удалить', chat_path(message), remote: true, :method => :delete

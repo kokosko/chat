@@ -1,8 +1,8 @@
-- if message
+tr id=message.id
   td.mdl-data-table__cell--non-numeric.username
-    = "" + message.username + " (" + message.city + ")"
+    = message.username + " (" + message.city + ")"
   td.text.mdl-data-table__cell--non-numeric
-    - if message.approved 
-      = message.text
-    - else 
+    - if message.approved.blank? 
       = 'Сообщение модерируется'
+    - else
+      = message.approved ? message.text : 'Сообщение заблокировано'

@@ -1,12 +1,16 @@
 class ChatController < ApplicationController
-  before_action :set_message, only: [:update, :destroy]
+  before_action :set_message, only: [:show, :update, :destroy]
 
   def index
     @messages = Message.order(created_at: :desc)
   end
 
-  def update
+  def show
     @message.update_attribute(:approved,true)
+  end
+
+  def update
+    @message.update_attribute(:approved,false)
   end
 
   def create
@@ -16,8 +20,7 @@ class ChatController < ApplicationController
   end
 
   def destroy
-    @message.update_attribute(:text,"Сообщение не прошло модерацию.")
-#    @message.destroy
+    @message.destroy
   end
 
   def message_params
