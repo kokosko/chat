@@ -23,4 +23,7 @@
   h3 Повідомлення
   table.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--2dp#messages
     tbody
-      = render partial: 'message', collection: @messages.sort_by(&:id) unless @messages.empty?
+      - if @messages.empty?
+        Повідомлень немає
+      - else
+        = render partial: 'message', collection: @messages.sort_by(&:id)
