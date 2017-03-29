@@ -1,10 +1,10 @@
 - if message 
   .message
     .username
-      = message.username + " (" + message.city + ")"
+      = "" + message.username + " (" + message.city + ")"
     .text
       = message.text
     .buttons
-      => link_to 'Погодити', chat_path(message), remote: true, :method => :put
-      => link_to 'Видалити', chat_path(message), remote: true, :method => :delete
+      => link_to 'Одобрить', chat_path(message), remote: true, :method => :put
+      => link_to 'Заблокировать', chat_path(message), remote: true, :method => :delete
 
