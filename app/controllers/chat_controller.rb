@@ -17,6 +17,7 @@ class ChatController < ApplicationController
 
   def destroy
     @message.update_attribute(:text,"Повідомлення не пройшло модерацію.")
+#    @message.destroy
   end
 
   def message_params
