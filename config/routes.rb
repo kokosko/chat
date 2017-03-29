@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  root 'chat#index'
+  resources :superadmin, only: [:index]
 
   match '/auth/google_oauth2/callback', to: 'sessions#create', via: [:all]
-
-  resources :chat, only: [:index, :create, :show]
+  resources :chat
   resources :sessions, only: [:create, :destroy]
   resource :user, only: [:update]
 end

@@ -1,0 +1,3 @@
+.chat
+  #messages
+    = render partial: 'message', collection: @messages.sort_by(&:id)

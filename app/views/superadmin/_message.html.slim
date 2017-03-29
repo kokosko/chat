@@ -1,0 +1,9 @@
+.message
+  .username
+    = message.username + " (" + message.city + ")"
+  .text
+    = message.text
+  .buttons
+    => link_to 'Погодити', chat_path(message), :method => :put
+    => link_to 'Видалити', chat_path(message), :method => :delete
+

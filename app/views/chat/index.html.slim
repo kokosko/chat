@@ -1,38 +1,26 @@
-nav.top.fixed
-  .show_users
-    => button_tag class: 'btn'
-      i.material-icons people
-  .title
-    span.channel =" ##{ current_user.corp }"
-  .current_user
-    .username
-      => current_user.email
-    .avatar => image_tag current_user.image
-    .log_out
-      => button_to session_path(current_user.id), method: :delete, remote: true, class: 'btn' do
-        i.material-icons power_settings_new
-
-.users.fixed.hide
-  #users
-    = render partial: 'chat/user', collection: @users
-
 .chat
-  .showmore.fixed
-    = render partial: 'chat/show_more', locals: { page: 2 } unless @messages.last_page?
-  #messages
-    = render partial: 'chat/messages_group', locals: { messages: @messages.sort_by(&:id) } unless @messages.empty?
-  #new_message.fixed
+  #new_message
     = form_for :message, url: chat_index_path, remote: true, html: { id: 'message_form' } do |f|
-      => f.hidden_field :user_id, value: current_user.id
-      .avatar => image_tag current_user.image
+      .username
+        .message_input.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+          => f.text_field :username, autocomplete: 'off', class: 'mdl-textfield__input'
+          => f.label 'Ім"я', class: 'mdl-textfield__label'
+
+      .city
+        .message_input.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+          => f.text_field :city, autocomplete: 'off', class: 'mdl-textfield__input'
+          => f.label 'Місто', class: 'mdl-textfield__label'
+
       .text
         .message_input.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
           => f.text_field :text, autocomplete: 'off', class: 'mdl-textfield__input'
-          => f.label 'Your message', class: 'mdl-textfield__label'
+          => f.label 'Повідомлення', class: 'mdl-textfield__label'
+
       .submit
-        => f.button type: 'submit', id: 'submit', class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent' do
-          => 'Send'
+        => f.button type: 'submit', id: 'submit', class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored' do
+          => 'Надіслати'
           i.material-icons send
-      .submit-small
-        => f.button type: 'submit', id: 'submit', class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent' do
-          i.material-icons send
+  h3 Повідомлення
+  table.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--2dp#messages
+    tbody
+      = render partial: 'message', collection: @messages.sort_by(&:id)
