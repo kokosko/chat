@@ -21,6 +21,7 @@
           => 'Отправить'
           i.material-icons send
   h3 Сообщения
+  = link_to 'Обновить', root_path, method: :get
   table.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--2dp#messages
     tbody
       = render partial: 'message', collection: @messages
