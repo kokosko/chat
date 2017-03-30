@@ -1,4 +1,6 @@
 .chat#messages
+= link_to 'Обновить', superadmin_index_path, method: :get, class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored'
+p
   table.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--2dp
     tbody
       = render partial: 'message', collection: @messages
