@@ -16,6 +16,7 @@ class ChatController < ApplicationController
   def create
     @message = Message.new(message_params)
     return unless @message.save
+    @message.update_attribute(:approved, true)
 #    ActionCable.server.broadcast @message, message: @message
   end
 
