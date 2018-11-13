@@ -2,12 +2,12 @@
   #new_message
     = form_for :message, url: chat_index_path, remote: true, html: { id: 'message_form' } do |f|
       .username
-        .message_input.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        .message_input.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.is-focused
           => f.text_field :username, autocomplete: 'off', class: 'mdl-textfield__input'
           => f.label 'Имя', class: 'mdl-textfield__label'
 
       .city
-        .message_input.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
+        .message_input.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.is-focused
           => f.text_field :city, autocomplete: 'off', class: 'mdl-textfield__input'
           => f.label 'Город', class: 'mdl-textfield__label'
 
