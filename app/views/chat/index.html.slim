@@ -4,24 +4,23 @@
       .username
         .message_input.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.is-focused
           => f.text_field :username, autocomplete: 'off', class: 'mdl-textfield__input'
-          => f.label 'Имя', class: 'mdl-textfield__label'
+          => f.label "Ім'я", class: 'mdl-textfield__label'
 
       .city
         .message_input.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label.is-focused
           => f.text_field :city, autocomplete: 'off', class: 'mdl-textfield__input'
-          => f.label 'Город', class: 'mdl-textfield__label'
+          => f.label "Ім'я", class: 'mdl-textfield__label'
 
       .text
         .message_input.mdl-textfield.mdl-js-textfield.mdl-textfield--floating-label
           => f.text_field :text, autocomplete: 'off', class: 'mdl-textfield__input'
-          => f.label 'Текст сообщения', class: 'mdl-textfield__label'
+          => f.label 'Текст', class: 'mdl-textfield__label'
 
       .submit
         => f.button type: 'submit', id: 'submit', class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored' do
-          => 'Отправить'
+          => 'Надіслати'
           i.material-icons send
-  h3 Сообщения
-  = link_to 'Обновить', root_path, method: :get
+  = link_to 'Оновити', root_path, method: :get
   table.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--2dp#messages
     tbody
       = render partial: 'message', collection: @messages
