@@ -1,6 +1,6 @@
 tr id=message.id
   td.mdl-data-table__cell--non-numeric.username
-    = message.username + " (" + message.city + ")"
+    = message.username
   td.text.mdl-data-table__cell--non-numeric
     - if message.approved.present? 
       =  message.text
