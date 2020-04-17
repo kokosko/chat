@@ -20,7 +20,9 @@
         => f.button type: 'submit', id: 'submit', class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored' do
           => 'Надіслати'
           i.material-icons send
+  br
   = link_to 'Оновити', root_path, method: :get
+  br
   table.mdl-data-table.mdl-js-data-table.mdl-data-table--selectable.mdl-shadow--2dp#messages
     tbody
       = render partial: 'message', collection: @messages
